@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .form{
+            width:80%;
+        }
+
+        .form-group{
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+        }
+        .err{
+            display: flex;
+            align-items: center;
+            height:25px;
+            margin-top: 10px;
+            color:white;
+            background: rgb(247, 141, 141);
+            padding:5px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+        input{
+            height:25px;
+            margin-top:10px;
+            border-radius:5px;
+            border-style: none;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form">
+        <div class="form-group">
+                <label>Name:</label>
+                <input type="text" id="formName"/>
+                <div id="nameErr" class="err"></div>
+        </div>
+        <div class="form-group">
+                <label>Password:</label>
+                <input type="text" id="formPassword"/>
+                <div id="passwordErr" class="err"></div>
+        </div >
+
+        <div class="form-group">
+                <label>Email:</label>
+                <input type="text" id="formEmail"/>
+                <div id="emailErr" class="err"></div>
+        </div>
+
+        <button id="submit">Submit</button>
+        
+    </div>
+    
+</body>
+
+<script>
+    $(document).ready(function(){
+        var reEmail = /\S+@\S+\.\S+/;
+        var rePassword=/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
+        $("#nameErr").hide();
+        $("#passwordErr").hide();
+        $("#emailErr").hide();
+        $("#formName").on("focusout",function(){
+            var name= $("#formName").val();
+            if(name.length<6){
+                $("#nameErr").html("Name must have atleast 6 character");
+                $("#nameErr").show();
+            }
+            else{
+                $("#nameErr").hide();
+            }
+        })
+
+        $("#formEmail").on("focusout",function(){
+            var email= $("#formEmail").val();
+            // console.log(re.test(email))
+            if(!reEmail.test(email)){
+                $("#emailErr").html("Invalid Email");
+                $("#emailErr").show();
+            }
+            else{
+                $("#emailErr").hide();
+            }
+        });
+
+        $("#formPassword").on("focusout",function(){
+            var password= $("#formPassword").val();
+            // console.log(re.test(email))
+            if(!rePassword.test(password)){
+                $("#passwordErr").html("Insert Valid Password");
+                $("#passwordErr").show();
+            }
+            else{
+                $("#passwordErr").hide();
+            }
+        })
+
+        $('#submit').on("click",function(){
+            var name= $("#formName").val();
+            if(name.length<6){
+                $("#nameErr").html("Name must have atleast 6 character");
+                $("#nameErr").show();
+            }
+            else{
+                $("#nameErr").hide();
+            }
+
+            var email= $("#formEmail").val();
+            // console.log(re.test(email))
+            if(!reEmail.test(email)){
+                $("#emailErr").html("Invalid Email");
+                $("#emailErr").show();
+            }
+            else{
+                $("#emailErr").hide();
+            }
+            var password= $("#formPassword").val();
+            if(!rePassword.test(password)){
+                $("#passwordErr").html("Insert Valid Password");
+                $("#passwordErr").show();
+            }
+            else{
+                $("#passwordErr").hide();
+            }
+
+        })
+    })
+</script>
+</html>

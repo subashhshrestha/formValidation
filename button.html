@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .buttonContent{
+            position: relative;
+            width: 150px;
+            display: block;
+            height: 30px;
+        }
+        .button{
+            width:150px;
+            height: 30px;
+            border-style:none;
+            border: 1px solid rgb(219, 35, 90);
+            border-radius: 5px;
+            background-color: rgba(219, 35, 90, 0.8); 
+            color: white;
+            cursor: pointer;
+            position: absolute;
+        }
+        #symbol1{
+            display: flex;
+            height: 20px;
+            width: 20px;
+            background: transparent;
+            border: 2px solid black;
+            z-index: 5;
+            position:absolute;
+            border-radius: 50%;
+            left: 50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+            visibility:hidden;
+        }
+        .symbol2{
+            display: flex;
+            height: 20px;
+            width: 20px;
+            border: 2px solid black;
+            background: linear-gradient(to right, #000000 50%, transparent 50%);
+            z-index: 5;
+            position:absolute;
+            border-radius: 50%;
+            left: 50%;
+            top:50%;
+            visibility: hidden;
+            transform: translate(-50%,-50%);
+        }
+        .symbol3{
+            display: flex;
+            height: 20px;
+            width: 20px;
+            border: 2px solid black;
+            background: black;
+            z-index: 5;
+            position:absolute;
+            border-radius: 50%;
+            left: 50%;
+            top:50%;
+            visibility: hidden;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <span class="buttonContent">
+        <button class="button" onclick="change()">Click</button>
+        <span id="symbol1"></span>
+        <span class="symbol2"></span>
+        <span class="symbol3"></span>
+    </span>
+</body>
+<script>
+    var x=0;
+    function change(){
+        var ele = document.getElementById("symbol1");
+        console.log(ele);
+        x=(x+1)%4;
+        if(x==1){
+            ele.style.visibility= "visible";
+        }else if(x==2){
+            ele.style.visibility= "visible";
+            ele.style.background= "linear-gradient(to right, #000000 50%, transparent 50%)";
+
+        }else if(x==3){
+            ele.style.visibility= "visible";
+            ele.style.background= "black";
+
+        }else if(x==0){
+            ele.style.visibility="hidden";
+            ele.style.background= "transprent";
+        }
+        console.log(x);
+    }
+</script>
+</html>
